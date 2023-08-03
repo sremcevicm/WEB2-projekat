@@ -1,38 +1,73 @@
 .App {
-  text-align: center;
+    text-align: center;
 }
 
 .App-logo {
-  height: 40vmin;
-  pointer-events: none;
+    height: 40vmin;
+    pointer-events: none;
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+    .App-logo {
+        animation: App-logo-spin infinite 20s linear;
+    }
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
 }
 
 .App-link {
-  color: #61dafb;
+    color: #61dafb;
 }
 
 @keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+body {
+    margin: 0; /* Postavite margin i padding tela na 0 kako bi slika popunjavala celu površinu ekrana */
+    padding: 0;
+    background-image: url("images/pexels-francesco-ungaro-281260.jpg"); /* Postavite putanju do slike */
+    background-size: cover; /* Podesite sliku da popuni ceo ekran */
+    background-position: center; /* Postavite poziciju slike na centar */
+    background-repeat: no-repeat;
+}
+
+.login-and-register {
+    display: flex; /* Postavi flex kontejner */
+    display: flex;
+    justify-content: center; /* Postavi sadržaj u sredinu po horizontali */
+    align-items: center; /* Postavi sadržaj u sredinu po vertikali */
+    height: 50vh;
+}
+
+.login,
+.register {
+    flex: 1; /* Ravnomerno podeli prostor između elemenata */
+    width: 50%; /* Podeli širinu kontejnera na pola */
+    max-width: 500px; /* Postavi maksimalnu širinu sadržaja */
+    padding: 20px; /* Dodajte padding kako bi se sadržaj odmakao od ivica */
+    border: 1px solid #ccc;
+    background-color: white;
+}
+
+.naslov {
+    display: flex; /* Postavi flex kontejner */
+    display: flex;
+    justify-content: center; /* Postavi sadržaj u sredinu po horizontali */
+    align-items: center; /* Postavi sadržaj u sredinu po vertikali */
+    padding: 40px;
 }
