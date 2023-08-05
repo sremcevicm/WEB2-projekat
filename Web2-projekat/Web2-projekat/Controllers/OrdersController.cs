@@ -2,7 +2,7 @@
 
 namespace Web2_projekat.Controllers
 {
-    public class UsersController : ControllerBase
+    public class OrdersController : ControllerBase
     {
         
     }
