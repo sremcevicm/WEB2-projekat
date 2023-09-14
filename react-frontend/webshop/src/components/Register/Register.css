@@ -1,0 +1,22 @@
+.register-form {
+    text-align: center;
+    padding: 20px;
+    border: 1px solid #ccc;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    background-color: #f9f9f9;
+    max-width: 800px;
+}
+
+.mb-3 {
+    width: 500px;
+    padding: 0px;
+    text-align: center;
+}
+
+.header {
+    display: flex;
+    justify-content: center; /* Horizontalno centriranje */
+    align-items: center; /* Vertikalno centriranje */
+    height: 10vh; /* Da bi se kontejner proširio na visinu ekrana */
+    text-align: center; /* Opciono, za centriranje teksta unutar <h1> */
+}

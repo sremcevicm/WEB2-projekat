@@ -44,30 +44,8 @@ body {
     background-size: cover; /* Podesite sliku da popuni ceo ekran */
     background-position: center; /* Postavite poziciju slike na centar */
     background-repeat: no-repeat;
-}
-
-.login-and-register {
-    display: flex; /* Postavi flex kontejner */
     display: flex;
-    justify-content: center; /* Postavi sadržaj u sredinu po horizontali */
-    align-items: center; /* Postavi sadržaj u sredinu po vertikali */
-    height: 50vh;
-}
-
-.login,
-.register {
-    flex: 1; /* Ravnomerno podeli prostor između elemenata */
-    width: 50%; /* Podeli širinu kontejnera na pola */
-    max-width: 500px; /* Postavi maksimalnu širinu sadržaja */
-    padding: 20px; /* Dodajte padding kako bi se sadržaj odmakao od ivica */
-    border: 1px solid #ccc;
-    background-color: white;
-}
-
-.naslov {
-    display: flex; /* Postavi flex kontejner */
-    display: flex;
-    justify-content: center; /* Postavi sadržaj u sredinu po horizontali */
-    align-items: center; /* Postavi sadržaj u sredinu po vertikali */
-    padding: 40px;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
 }

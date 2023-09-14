@@ -1,0 +1,6 @@
+.fb-login-button {
+    display: flex;
+    text-align: center;
+    justify-content: center; /* Horizontalno centriranje */
+    align-items: center;
+}

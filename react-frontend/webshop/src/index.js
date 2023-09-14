@@ -6,6 +6,15 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 //import Home from "./components/Home/Home";
 
+window.fbAsyncInit = function () {
+    window.FB.init({
+        appId: "YOUR_APP_ID",
+        autoLogAppEvents: true,
+        xfbml: true,
+        version: "v10.0", // Promenite verziju prema vašim potrebama
+    });
+};
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
     <React.StrictMode>
