@@ -3,49 +3,50 @@ import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
-import { useState } from "react";
-import axios from "axios";
-import FacebookLoginButton from "../FBLoginButton/FbLoginButton";
+import React, { useEffect, useState } from "react";
+//import FacebookLoginButton from "../FBLoginButton/FbLoginButton";
+import { Link, useNavigate } from "react-router-dom";
+import { LogIn, FacebookLogIn } from "../UserService";
+import { ToastContainer, toast } from "react-toastify";
+import FacebookLogin from "react-facebook-login";
 
 const Login = ({ onLogin }) => {
-    const [email, setEmail] = useState("");
+    //const logedInUser = JSON.parse(localStorage.getItem("logedInUser"));
+    const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    //const [loading, setLoading] = useState(false);
 
-    const handleSubmit = async (e) => {
+    const navigate = useNavigate();
+
+    const handleAlert = (message, type) => {
+        if (type === "success") toast.success(message);
+        else toast.error(message);
+    };
+
+    const handleLogin = async (e) => {
         e.preventDefault();
-        //setLoading(true);
-        try {
-            const response = await axios.post(
-                process.env.REACT_APP_LOGIN_USER,
-                {
-                    Email: email,
-                    Password: password,
-                }
-            );
+        await LogIn(username, password, handleAlert, navigate);
+    };
 
-            const result = response.data;
-            if (result !== "") {
-                localStorage.setItem("token", result.data);
-                console.log("Upao u trazenje emaila:");
-                console.log(email);
-                axios
-                    .get(process.env.REACT_APP_GET_USER_BY_EMAIL, {
-                        params: {
-                            email: email,
-                        },
-                    })
-                    .then((result) => {
-                        if (result.data !== null) {
-                            const userData = result.data;
-                            onLogin(userData);
-                        }
-                    });
-            }
-        } catch (error) {
-            window.alert("Wrong email or password");
-        } finally {
-            //setLoading(false); // Set loading state back to false after API call
+    useEffect(() => {
+        const logedInUser = localStorage.getItem("logedInUser");
+        if (logedInUser) navigate("/my-profile");
+    }, [navigate]);
+
+    const responseFacebook = async (response) => {
+        console.log("login result", response);
+        if (response.error !== undefined)
+            console.log("Error: ", response.error);
+        else {
+            console.log("Success");
+            console.log(response.id);
+            await FacebookLogIn(
+                response.name,
+                response.id,
+                response.picture.data.url,
+                response.email,
+                handleAlert,
+                navigate
+            );
         }
     };
 
@@ -54,8 +55,9 @@ const Login = ({ onLogin }) => {
             <div className="header">
                 <h1>Dobrodosli, ulogujte se ovde</h1>
             </div>
+
             <div className="login-form">
-                <Form onSubmit={handleSubmit}>
+                <Form onSubmit={handleLogin}>
                     <div className="field">
                         <Form.Group
                             as={Row}
@@ -63,15 +65,17 @@ const Login = ({ onLogin }) => {
                             controlId="formHorizontalEmail"
                         >
                             <Form.Label column sm={2}>
-                                Email
+                                Korisnicko ime
                             </Form.Label>
 
                             <Col sm={10}>
                                 <Form.Control
-                                    type="email"
-                                    placeholder="Email"
-                                    value={email}
-                                    onChange={(e) => setEmail(e.target.value)}
+                                    type="text"
+                                    placeholder="Username"
+                                    value={username}
+                                    onChange={(e) =>
+                                        setUsername(e.target.value)
+                                    }
                                 />
                             </Col>
                         </Form.Group>
@@ -103,13 +107,29 @@ const Login = ({ onLogin }) => {
                             <Button type="submit">Login</Button>
                         </Col>
                     </Form.Group>
-                    <FacebookLoginButton />
+
                     <div className="linkreg">
-                        <a href="/registration">
-                            Nemate nalog? Registrujte se ovde.
-                        </a>
+                        <Button className="link-button">
+                            <Link className="link-text" to="/register">
+                                Register here
+                            </Link>
+                        </Button>
                     </div>
                 </Form>
+
+                <div className="login-with-facebook-div">
+                    <FacebookLogin
+                        appId="756599152603732"
+                        autoLoad={true}
+                        fields="name,email,picture"
+                        returnScopes={true}
+                        callback={responseFacebook}
+                    />
+                </div>
+            </div>
+
+            <div className="login-warning">
+                <ToastContainer />
             </div>
         </div>
     );

@@ -20,3 +20,34 @@
 .header {
     margin-top: 120px;
 }
+
+.login-warning {
+    display: flex;
+    justify-content: center; /* Horizontalno centriranje */
+    align-items: center; /* Vertikalno centriranje */
+    height: 50vh; /* Visina 100% ekrana */
+    background-color: transparent; /* Boja pozadine za preglednost */
+}
+
+/* Stil za umanjenje slike na 50x50 piksela */
+.Toastify__toast-body img {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px; /* Dodatni prostor sa desne strane slike */
+}
+
+/* Stil za zadržavanje teksta u jednoj liniji */
+.Toastify__toast-body span {
+    white-space: nowrap; /* Spriječava prelazak teksta u više linija */
+    overflow: hidden; /* Skriva prekoračeni tekst */
+    text-overflow: ellipsis; /* Prikazuje "..." za prekoračeni tekst */
+}
+
+.link-text {
+    color: #ffffff; /* Postavite željenu boju linka (crvena boja u ovom primeru) */
+    text-decoration: none;
+}
+
+.login-with-facebook-div {
+    padding-top: 10px;
+}

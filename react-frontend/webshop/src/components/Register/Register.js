@@ -4,56 +4,51 @@ import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
-import { useNavigate } from "react-router";
-import axios from "axios";
 import "./Register.css";
-import FacebookLoginButton from "../FBLoginButton/FbLoginButton";
+import { Link, useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { RegisterUser } from "../UserService";
+import FacebookLogin from "react-facebook-login";
 
-function Register(props) {
+export const Register = () => {
     const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
     const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [passwordRepeat, setPasswordRepeat] = useState("");
     const [name, setName] = useState("");
-    const [surname, setSurname] = useState("");
-    const [address, setAddress] = useState("");
-    const [birthDay, setBirthDay] = useState("");
-    const [role, setRole] = useState("");
-    const [profilePicture, setProfilePicture] = useState("");
-
+    const [lastname, setLastname] = useState("");
+    const [dateOfBirth, setDateOfBirth] = useState("");
+    const [adress, setAdress] = useState("");
+    const [userType, setUserType] = useState("seller");
+    const [profilePicture, setProfilePicture] = useState(null);
     const navigate = useNavigate();
 
-    const userDto = {
-        Username: username,
-        Password: password,
-        Email: email,
-        Name: name,
-        Surname: surname,
-        Address: address,
-        BirthDay: birthDay,
-        Role: parseInt(role),
-        ProfilePicture: profilePicture,
+    const handleAlert = (message, type) => {
+        if (type === "success") toast.success(message);
+        else toast.error(message);
     };
 
-    const handleRegister = async (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
+        await RegisterUser(
+            username,
+            email,
+            password,
+            passwordRepeat,
+            name,
+            lastname,
+            dateOfBirth,
+            adress,
+            userType,
+            profilePicture,
+            handleAlert,
+            navigate
+        );
+    };
 
-        console.log(userDto.Role);
-
-        try {
-            axios
-                .post(process.env.REACT_APP_USERS, userDto)
-                .then((response) => {
-                    console.log("Product successfully created:", response.data);
-                    navigate("/");
-                })
-                .catch(() => {
-                    window.alert("Username or email are already taken");
-                    navigate("/registration");
-                });
-        } catch {
-            window.alert("Something went wrong");
-            navigate("/registration");
-        }
+    const responseFacebook = (response) => {
+        console.log("login result", response);
     };
 
     return (
@@ -62,7 +57,7 @@ function Register(props) {
                 <h1>Registracija</h1>
             </div>
             <div className="register-form">
-                <Form onSubmit={handleRegister}>
+                <Form onSubmit={handleSubmit}>
                     <Form.Group
                         as={Row}
                         className="mb-3"
@@ -120,6 +115,26 @@ function Register(props) {
                     <Form.Group
                         as={Row}
                         className="mb-3"
+                        controlId="formHorizontalPassword"
+                    >
+                        <Form.Label column sm={2}>
+                            Repeat Password
+                        </Form.Label>
+                        <Col sm={10}>
+                            <Form.Control
+                                type="password"
+                                placeholder="Repeat Password"
+                                value={passwordRepeat}
+                                onChange={(e) =>
+                                    setPasswordRepeat(e.target.value)
+                                }
+                            />
+                        </Col>
+                    </Form.Group>
+
+                    <Form.Group
+                        as={Row}
+                        className="mb-3"
                         controlId="formHorizontalName"
                     >
                         <Form.Label column sm={2}>
@@ -147,8 +162,8 @@ function Register(props) {
                             <Form.Control
                                 type="text"
                                 placeholder="Prezime"
-                                value={surname}
-                                onChange={(e) => setSurname(e.target.value)}
+                                value={lastname}
+                                onChange={(e) => setLastname(e.target.value)}
                             />
                         </Col>
                     </Form.Group>
@@ -164,8 +179,8 @@ function Register(props) {
                         <Col sm={10}>
                             <Form.Control
                                 type="date"
-                                value={birthDay}
-                                onChange={(e) => setBirthDay(e.target.value)}
+                                value={dateOfBirth}
+                                onChange={(e) => setDateOfBirth(e.target.value)}
                             />
                         </Col>
                     </Form.Group>
@@ -182,8 +197,8 @@ function Register(props) {
                             <Form.Control
                                 type="text"
                                 placeholder="Adresa"
-                                value={address}
-                                onChange={(e) => setAddress(e.target.value)}
+                                value={adress}
+                                onChange={(e) => setAdress(e.target.value)}
                             />
                         </Col>
                     </Form.Group>
@@ -198,8 +213,8 @@ function Register(props) {
                         </Form.Label>
                         <Col sm={10}>
                             <Form.Select
-                                onChange={(e) => setRole(e.target.value)}
-                                value={role}
+                                onChange={(e) => setUserType(e.target.value)}
+                                value={userType}
                             >
                                 <option value="0">Administrator</option>
                                 <option value="1">Prodavac</option>
@@ -221,7 +236,7 @@ function Register(props) {
                                 type="file"
                                 accept="image/*"
                                 onChange={(e) =>
-                                    setProfilePicture(e.target.value)
+                                    setProfilePicture(e.target.files[0])
                                 }
                                 value={profilePicture}
                             />
@@ -234,10 +249,24 @@ function Register(props) {
                         </Col>
                     </Form.Group>
                 </Form>
-                <FacebookLoginButton />
+                <div className="inside-div-register-form">
+                    <div className="login-dugme">
+                        <Button className="link-button">
+                            <Link className="link-text" to="/login">
+                                Log in here
+                            </Link>
+                        </Button>
+                    </div>
+                    <FacebookLogin
+                        appId="756599152603732"
+                        autoLoad={true}
+                        fields="name,email,picture"
+                        returnScopes={true}
+                        callback={responseFacebook}
+                    />
+                </div>
+                <ToastContainer />
             </div>
         </div>
     );
-}
-
-export default Register;
+};

@@ -20,3 +20,7 @@
     height: 10vh; /* Da bi se kontejner proširio na visinu ekrana */
     text-align: center; /* Opciono, za centriranje teksta unutar <h1> */
 }
+
+.login-dugme {
+    padding-bottom: 10px;
+}

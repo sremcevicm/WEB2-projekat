@@ -253,3 +253,7 @@ C:\Users\Milan Sremčević\Desktop\WEB2\WEB2-projekat\Web2-projekat\Web2-projeka
 C:\Users\Milan Sremčević\Desktop\WEB2\WEB2-projekat\Web2-projekat\Web2-projekat\bin\Debug\net7.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
 C:\Users\Milan Sremčević\Desktop\WEB2\WEB2-projekat\Web2-projekat\Web2-projekat\bin\Debug\net7.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\Milan Sremčević\Desktop\WEB2\WEB2-projekat\Web2-projekat\Web2-projekat\bin\Debug\net7.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+C:\Users\Milan Sremčević\Desktop\WEB2\WEB2-projekat\Web2-projekat\Web2-projekat\bin\Debug\net7.0\EntityFramework.Exceptions.Common.dll
+C:\Users\Milan Sremčević\Desktop\WEB2\WEB2-projekat\Web2-projekat\Web2-projekat\bin\Debug\net7.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\Milan Sremčević\Desktop\WEB2\WEB2-projekat\Web2-projekat\Web2-projekat\bin\Debug\net7.0\BCrypt.Net-Next.dll
+C:\Users\Milan Sremčević\Desktop\WEB2\WEB2-projekat\Web2-projekat\Web2-projekat\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
