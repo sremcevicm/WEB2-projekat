@@ -6,6 +6,7 @@ import { DeleteProduct } from "../ArticleService";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { Button, Table } from "react-bootstrap";
+import { BackButton } from "../Buttons/BackButton";
 
 export const MyProducts = () => {
     const [products, setProducts] = useState([]);
@@ -56,11 +57,9 @@ export const MyProducts = () => {
 
     return (
         <>
-            <Link className="link-button" to="/dashboard">
-                <Button className="back-to-dashboard-button">Meni</Button>
-            </Link>
+            <BackButton/>
             <ToastContainer />
-            <h2>Moji artikli</h2>
+            <h2 style={{marginTop:"15px"}}>Moji artikli</h2>
             {products.length === 0 ? (
                 <p>Nemate artikala, moracete dodati</p>
             ) : (
@@ -82,6 +81,7 @@ export const MyProducts = () => {
                                     className="profile-picture"
                                     src={product.image}
                                     alt="Nothing"
+                                    style={{ maxWidth: "300px" }}
                                 />
                             </td>
                             <td>{product.name}</td>
@@ -108,6 +108,7 @@ export const MyProducts = () => {
                                         onClick={() =>
                                             handleDeleteProduct(product.id)
                                         }
+                                        style={{marginTop:"15px"}}
                                     >
                                         Obrisi
                                     </Button>

@@ -4,6 +4,7 @@ import { AddProduct } from "../ArticleService";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Button } from "react-bootstrap";
+import { BackButton } from "../Buttons/BackButton";
 
 export const AddNewProduct = () => {
     const token = localStorage.getItem("token");
@@ -35,9 +36,7 @@ export const AddNewProduct = () => {
 
     return (
         <div className="auth-form-container">
-            <Link className="link-button" to="/dashboard">
-                <Button className="back-to-dashboard-button">Meni</Button>
-            </Link>
+            <BackButton/>
             <ToastContainer />
             <h2>Dodaj novi proizvod</h2>
             <form className="add-new-product-form" onSubmit={handleSubmit}>
@@ -87,7 +86,7 @@ export const AddNewProduct = () => {
                     name="image"
                 />
 
-                <Button type="submit">Dodaj</Button>
+                <Button type="submit" style={{ marginTop:"15px" }}>Dodaj</Button>
             </form>
         </div>
     );

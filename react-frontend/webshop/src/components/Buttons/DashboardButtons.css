@@ -1,0 +1,11 @@
+
+
+button {
+    width: 100%; /* Postavlja širinu dugmeta na 100% .button div-a */
+    padding: 10px; /* Dodajte željeni padding za dugme */
+}
+
+.db-button {
+    flex: 1; /* Ravnomerno raspoređuje .button elemente unutar .button-container-a */
+    margin-right: 10px; /* Dodajte željeni razmak između dugmadi */
+}

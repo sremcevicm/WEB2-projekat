@@ -1,0 +1,30 @@
+table {
+    width: 100%; /* Postavite širinu tabele na 100% kako bi se popunila širina roditeljskog kontejnera */
+    border-collapse: collapse; /* Spaja ivice ćelija */
+}
+
+td {
+    padding: 10px; /* Dodajte padding po želji */
+    border: 1px solid #ccc; /* Dodajte ivice ćelija po želji */
+}
+
+.sira {
+    width: 75%; /* Postavite širinu šire kolone na 75% */
+    background-color: lightblue; /* Stilizujte širu kolonu po želji */
+    
+}
+
+.uza {
+    width: 25%; /* Postavite širinu uže kolone na 25% */
+    background-color: lightgray; /* Stilizujte užu kolonu po želji */
+}
+
+td .mb-3 {
+    width: 105%;
+}
+
+.profile-picture-container{
+    width: 150px; 
+    height: 150px;
+    margin-bottom: 50px; 
+}

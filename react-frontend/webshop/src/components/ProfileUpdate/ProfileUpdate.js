@@ -9,6 +9,7 @@ import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Image from "react-bootstrap/Image";
+import { BackButton } from "../Buttons/BackButton";
 import "./ProfileUpdate.css";
 
 export const ProfileUpdate = () => {
@@ -55,9 +56,7 @@ export const ProfileUpdate = () => {
             <div className="header">
                 <h1>Dobrodosli {username}</h1>
             </div>
-            <Link className="link-button" to="/dashboard">
-                <button className="back-to-dashboard-button">User menu</button>
-            </Link>
+            <BackButton/>
             {userType === "Seller" && (
                 <label className="verified-status">{verifiedStatus}</label>
             )}
@@ -67,34 +66,24 @@ export const ProfileUpdate = () => {
                     <Table striped="columns" borderless hover>
                         <tbody>
                             <tr>
-                                <td>Profilna slika</td>
-                                <td>
+                                <td className="uza">Profilna slika</td>
+                                <td className="sira">
                                     <div className="profile-picture-container">
                                         <Image
                                             src={logedInUser.profilePicture}
                                             alt="Profile"
                                             className="profile-picture"
                                             rounded
+                                            fluid
                                         />
                                     </div>
-                                    <Form.Group>
-                                        <Form.Label>Promeni</Form.Label>
-                                        <Form.Control
-                                            type="file"
-                                            accept="image/*"
-                                            onChange={(e) =>
-                                                setProfilePicture(
-                                                    e.target.files[0]
-                                                )
-                                            }
-                                            value={profilePicture}
-                                        />
-                                    </Form.Group>
+                                    <label htmlFor="profilePicture">Promeni</label>
+                                    <input type="file" accept="image/*" onChange={(e) => setProfilePicture(e.target.files[0])} id="profilePicture" name="profilePicture" />
                                 </td>
                             </tr>
                             <tr>
-                                <td>Email Adresa</td>
-                                <td>
+                                <td className="uza">Email Adresa</td>
+                                <td className="sira">
                                     <Form.Group
                                         as={Row}
                                         className="mb-3"
@@ -117,8 +106,8 @@ export const ProfileUpdate = () => {
                                 </td>
                             </tr>
                             <tr>
-                                <td>Ime</td>
-                                <td>
+                                <td className="uza">Ime</td>
+                                <td className="sira">
                                     <Form.Group
                                         as={Row}
                                         className="mb-3"
@@ -141,8 +130,8 @@ export const ProfileUpdate = () => {
                                 </td>
                             </tr>
                             <tr>
-                                <td>Prezime</td>
-                                <td>
+                                <td className="uza">Prezime</td>
+                                <td className="sira">
                                     <Form.Group
                                         as={Row}
                                         className="mb-3"
@@ -166,8 +155,8 @@ export const ProfileUpdate = () => {
                             </tr>
 
                             <tr>
-                                <td>Datum rodjenja</td>
-                                <td>
+                                <td className="uza">Datum rodjenja</td>
+                                <td className="sira">
                                     <Form.Group
                                         as={Row}
                                         className="mb-3"
@@ -191,7 +180,7 @@ export const ProfileUpdate = () => {
                                 </td>
                             </tr>
 
-                            <tr colSpan="2">
+                            <tr colSpan="2" className="update-dugme">
                                 <Form.Group as={Row} className="mb-3">
                                     <Col sm={{ span: 10, offset: 1 }}>
                                         <Button type="submit">Update</Button>

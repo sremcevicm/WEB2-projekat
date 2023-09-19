@@ -8,6 +8,7 @@ import { OldOrdersButton } from "../Buttons/OldOrdersButton";
 import { VerifyUsersButton } from "../Buttons/VerifyUsersButton";
 import { MyProfileButton } from "../Buttons/MyProfileButton";
 import { Button } from "react-bootstrap";
+import "./Dashboard.css";
 
 const buttonsToRender = {
     Admin: [<MyProfileButton />, <AllOrdersButton />, <VerifyUsersButton />],
@@ -30,15 +31,22 @@ export const Dashboard = () => {
     };
 
     return (
-        <div className="dashboard">
-            <Button onClick={() => handleLogOut()} className="log-out-button">
+        <div className="dashboard-whole">
+            <div className="naslov">
+                <h1>Pocetna stranica</h1>
+            </div>
+            <div className="dashboard">
+            <Button size="lg" onClick={() => handleLogOut()} className="log-out-button">
                 Log out
             </Button>
+            </div>
             <ToastContainer />
+            <div className="button-container">
             {buttons[0]}
             {buttons[1]}
             {buttons[2]}
             {buttons[3]}
+            </div>
         </div>
     );
 };

@@ -6,6 +6,7 @@ import { PlaceNewOrder } from "../OrderService";
 import { Link } from "react-router-dom";
 import { Button, Form, Table } from "react-bootstrap";
 import { PayPalScriptProvider } from "@paypal/react-paypal-js";
+import { BackButton } from "../Buttons/BackButton";
 
 export const NewOrder = () => {
     const [allProducts, setAllProducts] = useState([]);
@@ -62,9 +63,7 @@ export const NewOrder = () => {
     return (
         <>
             <ToastContainer />
-            <Link className="link-button" to="/dashboard">
-                <Button className="back-to-dashboard-button">User menu</Button>
-            </Link>
+            <BackButton/>
             <h2 style={{ color: "white" }}>All products</h2>
             {allProducts.length === 0 ? (
                 <p>
@@ -85,9 +84,9 @@ export const NewOrder = () => {
                     {allProducts.map(product => (
                         <>
                             <tr key={product.id}>
-                                <td>{product.id}</td>
+                                <td style={{display:"none"}}>{product.id}</td>
                                 <td>
-                                    <img
+                                    <img style={{ maxWidth: "300px" }}
                                         className="profile-picture"
                                         src={product.image}
                                         alt="Nothing"
@@ -106,7 +105,8 @@ export const NewOrder = () => {
                                         id={`quantity_${product.id}`}
                                     />
                                     <Button
-                                        style={{ marginLeft: "5px" }}
+                                        style={{ marginTop: "15px" }}
+                                        variant="light"
                                         onClick={() => {
                                             const quantityInput =
                                                 document.getElementById(
@@ -160,7 +160,7 @@ export const NewOrder = () => {
                     id="comment"
                     name="comment"
                 />
-                <Button className="place-order-button" type="submit">
+                <Button className="place-order-button" type="submit" style={{ marginTop:"15px" }}>
                     Naruci
                 </Button>
                 

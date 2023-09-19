@@ -4,6 +4,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { CalculateCountdown, GetAllOrders } from "../OrderService";
 import { Button, Table } from "react-bootstrap";
+import { BackButton } from "../Buttons/BackButton";
 
 export const AllOrders = () => {
     const [allOrders, setAllOrders] = useState([]);
@@ -58,9 +59,7 @@ export const AllOrders = () => {
 
     return (
         <>
-            <Link className="link-button" to="/dashboard">
-                <Button className="back-to-dashboard-button">User menu</Button>
-            </Link>
+            <BackButton/>
             <ToastContainer />
             {allOrders.length === 0 ? (
                 <p>You do not have any orders</p>
@@ -77,7 +76,7 @@ export const AllOrders = () => {
                     </tr>
                     {allOrders.map(order => (
                         <tr key={order.id}>
-                            <td>{order.id}</td>
+                            <td style={{ display: "none" }}>{order.id}</td>
                             <td>{order.numberOfProducts}</td>
                             <td>{order.totalPrice}</td>
                             <td>{order.orderedAt}</td>

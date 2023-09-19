@@ -3,7 +3,8 @@ import { useLocation, Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { GetOrderDetails, IsOrderDelivered } from "../OrderService";
-import { Table, Button } from "react-bootstrap";
+import { Table, Button, Image } from "react-bootstrap";
+import { BackButton } from "../Buttons/BackButton";
 
 export const OrderDetails = () => {
     const logedInUser = JSON.parse(localStorage.getItem("logedInUser"));
@@ -37,9 +38,7 @@ export const OrderDetails = () => {
 
     return (
         <>
-            <Link className="link-button" to="/dashboard">
-                <Button className="back-to-dashboard-button">Meni</Button>
-            </Link>
+            <BackButton/>
             <ToastContainer />
             <h2>Detalji porudzbine</h2>
             <Table className="verify-sellers-table">
@@ -94,7 +93,8 @@ export const OrderDetails = () => {
                 {orderDetails.products.map((product) => (
                     <tr key={product.id}>
                         <td>
-                            <img
+                            <Image
+                                style={{ maxWidth: "300px" }}
                                 className="profile-picture"
                                 src={product.image}
                                 alt="Nothing"

@@ -5,6 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { VerifySeller } from "../UserService";
 import { Button, Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { BackButton } from "../Buttons/BackButton";
 
 export const VerifyUsers = () => {
     const [sellers, setSellers] = useState([]);
@@ -38,10 +39,8 @@ export const VerifyUsers = () => {
     return (
         <>
             <ToastContainer />
-            <Link className="link-button" to="/dashboard">
-                <Button className="back-to-dashboard-button">User menu</Button>
-            </Link>
-            <h2>Sellers verification</h2>
+            <BackButton/>
+            <h2>Verifikacija</h2>
             <Table className="verify-sellers-table">
                 <tr className="verify-sellers-table-header-row">
                     <th>Profilna slika</th>
@@ -59,6 +58,7 @@ export const VerifyUsers = () => {
                             <div className="profile-picture-container">
                                 <img
                                     className="profile-picture"
+                                    style={{ maxWidth: "150px", maxHeight:"150px" }}
                                     src={seller.profilePictureUrl}
                                     alt="Nothing"
                                 />

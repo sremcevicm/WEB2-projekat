@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { GetBuyersOrders } from "../OrderService";
+import { BackButton } from "../Buttons/BackButton";
 import {
     CalculateCountdown,
     CanOrderBeCanceled,
@@ -48,7 +49,7 @@ export const OldOrders = () => {
     useEffect(() => {
         const interval = setInterval(() => {
             setMyOrders((prevOrders) => {
-                return prevOrders.map((order) => {
+                return prevOrders.map(order => {
                     const updatedOrder = { ...order };
                     if (!updatedOrder.initialDeliveryTime) {
                         updatedOrder.initialDeliveryTime =
@@ -68,14 +69,12 @@ export const OldOrders = () => {
 
     return (
         <>
-            <Link className="link-button" to="/dashboard">
-                <Button className="back-to-dashboard-button">Meni</Button>
-            </Link>
+            <BackButton/>
             <ToastContainer />
             {myOrders.length === 0 ? (
                 <p>Nemas ni jednu posiljku</p>
             ) : (
-                <Table className="verify-sellers-table">
+                <Table className="verify-sellers-table" style={{ marginTop:"15px" }}>
                     <tr className="verify-sellers-table-header-row">
                         <th style={{ display: "none" }}>Id</th>
                         <th>Kolicina</th>
@@ -105,7 +104,7 @@ export const OldOrders = () => {
                             {order.orderCanceled === true ?(
                                 <p style={{color:"white"}}>Order is canceled</p>
                             ) : CanOrderBeCanceled(order) ? (
-                                <button onClick = {() => handleCancelOrder(order.id)}>Cancel order</button>
+                                <Button variant="light" onClick = {() => handleCancelOrder(order.id)}>Cancel order</Button>
                             ) : (
                                 <p style={{color:"white"}}>
                                     It is too late to cancel it now.

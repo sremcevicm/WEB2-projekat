@@ -4,6 +4,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { CalculateCountdown, GetSellersNewOrders } from "../OrderService";
 import { Button, Table } from "react-bootstrap";
+import { BackButton } from "../Buttons/BackButton";
 
 export const NewOrders = () => {
     const [myOrders, setMyOrders] = useState([]);
@@ -58,9 +59,7 @@ export const NewOrders = () => {
 
     return (
         <>
-            <Link className="link-button" to="/dashboard">
-                <Button className="back-to-dashboard-button">Meni</Button>
-            </Link>
+            <BackButton/>
             <ToastContainer />
             {myOrders.length === 0 ? (
                 <p>Nemate novih porudzbina</p>
