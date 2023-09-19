@@ -7,14 +7,13 @@ using System.Net.Mail;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
-using Web2_projekat.Exceptions;
 using EntityFramework.Exceptions.Common;
-using DTOs;
 using Microsoft.CodeAnalysis.Scripting;
 using Microsoft.IdentityModel.Tokens;
 using System.Net;
 using Web2_projekat.Models.Enumerations;
 using Web2_projekat.Repositories.Interfaces;
+using Web2_projekat.DTOs;
 
 namespace Web2_projekat.Services
 {

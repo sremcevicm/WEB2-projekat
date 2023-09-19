@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { GetBuyersOrders } from "../OrderService";
@@ -8,7 +8,7 @@ import {
     CanOrderBeCanceled,
     CancelOrder,
 } from "../OrderService";
-import { Link, Button, Table } from "react-bootstrap";
+import { Button, Table } from "react-bootstrap";
 
 export const OldOrders = () => {
     const [myOrders, setMyOrders] = useState([]);
@@ -73,7 +73,7 @@ export const OldOrders = () => {
             </Link>
             <ToastContainer />
             {myOrders.length === 0 ? (
-                <p style={{ color: "white" }}>Nemas ni jednu posiljku</p>
+                <p>Nemas ni jednu posiljku</p>
             ) : (
                 <Table className="verify-sellers-table">
                     <tr className="verify-sellers-table-header-row">
@@ -86,44 +86,34 @@ export const OldOrders = () => {
                         <th>Detalji</th>
                         <th>Odustani</th>
                     </tr>
-                    {myOrders.map((order) => (
-                        <tr key={order.id}>
-                            <td style={{ display: "none" }}>{order.id}</td>
-                            <td>{order.numberOfProducts}</td>
-                            <td>{order.totalPrice}</td>
-                            <td>{order.orderedAt}</td>
-                            <td>
-                                {order.orderCanceled === true ? (
-                                    <p>Otkazano</p>
-                                ) : (
-                                    order.deliveringTime
-                                )}
-                            </td>
-                            <td>{order.comment}</td>
-                            <td>
-                                <Button
-                                    onClick={() => handleDetailedView(order.id)}
-                                >
-                                    Detalji
-                                </Button>
-                            </td>
-                            <td>
-                                {order.orderCanceled === true ? (
-                                    <p>Otkazano</p>
-                                ) : CanOrderBeCanceled(order) ? (
-                                    <Button
-                                        onClick={() =>
-                                            handleCancelOrder(order.id)
-                                        }
-                                    >
-                                        Otkazi
-                                    </Button>
-                                ) : (
-                                    <p>Prosao je rok za otkazivanje</p>
-                                )}
-                            </td>
-                        </tr>
-                    ))}
+                    {myOrders.map(order => (
+                    <tr key={order.id}>
+                        <td style={{display:"none"}}>{order.id}</td>
+                        <td>{order.numberOfProducts}</td>
+                        <td>{order.totalPrice}</td>
+                        <td>{order.orderedAt}</td>
+                        <td>
+                            {order.orderCanceled === true ?(
+                                <p style={{color:"white"}}>Order is canceled</p>
+                            ):
+                            (order.deliveringTime)
+                            }
+                        </td>
+                        <td>{order.comment}</td>
+                        <td><button onClick={() => handleDetailedView(order.id)}>Details</button></td>
+                        <td>
+                            {order.orderCanceled === true ?(
+                                <p style={{color:"white"}}>Order is canceled</p>
+                            ) : CanOrderBeCanceled(order) ? (
+                                <button onClick = {() => handleCancelOrder(order.id)}>Cancel order</button>
+                            ) : (
+                                <p style={{color:"white"}}>
+                                    It is too late to cancel it now.
+                                </p>
+                            )}
+                        </td>
+                    </tr>
+                ))}
                 </Table>
             )}
         </>

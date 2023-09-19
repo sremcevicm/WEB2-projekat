@@ -21,7 +21,7 @@ export const PlaceNewOrder = async (
             return;
         }
         const response = await axios.post(
-            `${process.env.REACT_APP_API_BASE_URL}/api/order`,
+            `${process.env.REACT_APP_API_BASE_URL}/api/Orders`,
             {
                 comment,
                 deliveryAddress,
@@ -53,7 +53,7 @@ export const PlaceNewOrder = async (
 export const GetBuyersOrders = async (handleAlert, token) => {
     try {
         const response = await axios.get(
-            `${process.env.REACT_APP_API_BASE_URL}/api/order/buyer/orders`,
+            `${process.env.REACT_APP_API_BASE_URL}/api/Orders/buyer/orders`,
             {
                 headers: {
                     Authorization: `Bearer ${token}`,
@@ -71,7 +71,7 @@ export const GetBuyersOrders = async (handleAlert, token) => {
 export const GetAllOrders = async (handleAlert, token) => {
     try {
         const response = await axios.get(
-            `${process.env.REACT_APP_API_BASE_URL}/api/Order`,
+            `${process.env.REACT_APP_API_BASE_URL}/api/Orders`,
             {
                 headers: {
                     Authorization: `Bearer ${token}`,
@@ -89,7 +89,7 @@ export const GetAllOrders = async (handleAlert, token) => {
 export const GetSellersOldOrders = async (handleAlert, token) => {
     try {
         const response = await axios.get(
-            `${process.env.REACT_APP_API_BASE_URL}/api/Order/seller/my-orders`,
+            `${process.env.REACT_APP_API_BASE_URL}/api/Orders/seller/my-orders`,
             {
                 headers: {
                     Authorization: `Bearer ${token}`,
@@ -108,7 +108,7 @@ export const GetSellersOldOrders = async (handleAlert, token) => {
 export const CancelOrder = async (token, orderId, handleAlert, navigate) => {
     try {
         const response = await axios.put(
-            `${process.env.REACT_APP_API_BASE_URL}/api/order/cancel`,
+            `${process.env.REACT_APP_API_BASE_URL}/api/Orders/cancel`,
             {
                 undefined,
                 orderId,
@@ -169,7 +169,7 @@ export const GetOrderDetails = async (
     if (userType === "Seller") {
         try {
             const response = await axios.get(
-                `${process.env.REACT_APP_API_BASE_URL}/api/order/seller/details`,
+                `${process.env.REACT_APP_API_BASE_URL}/api/Orders/seller/details`,
                 {
                     params: {
                         orderId,
@@ -188,7 +188,7 @@ export const GetOrderDetails = async (
     } else {
         try {
             const response = await axios.get(
-                `${process.env.REACT_APP_API_BASE_URL}/api/order/details`,
+                `${process.env.REACT_APP_API_BASE_URL}/api/Orders/details`,
                 {
                     params: {
                         orderId,
@@ -217,7 +217,7 @@ export const IsOrderDelivered = (deliveringTime) => {
 export const GetSellersNewOrders = async (handleAlert, token) => {
     try {
         const response = await axios.get(
-            `${process.env.REACT_APP_API_BASE_URL}/api/Order/seller/new-orders`,
+            `${process.env.REACT_APP_API_BASE_URL}/api/Orders/seller/new-orders`,
             {
                 headers: {
                     Authorization: `Bearer ${token}`,

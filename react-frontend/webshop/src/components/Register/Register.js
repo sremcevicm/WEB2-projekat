@@ -47,10 +47,6 @@ export const Register = () => {
         );
     };
 
-    const responseFacebook = (response) => {
-        console.log("login result", response);
-    };
-
     return (
         <div className="stranica">
             <div className="header">
@@ -115,7 +111,7 @@ export const Register = () => {
                     <Form.Group
                         as={Row}
                         className="mb-3"
-                        controlId="formHorizontalPassword"
+                        controlId="formHorizontalPasswordRepeat"
                     >
                         <Form.Label column sm={2}>
                             Repeat Password
@@ -216,32 +212,20 @@ export const Register = () => {
                                 onChange={(e) => setUserType(e.target.value)}
                                 value={userType}
                             >
-                                <option value="0">Administrator</option>
-                                <option value="1">Prodavac</option>
-                                <option value="2">Kupac</option>
+                                <option value="seller">Seller</option>
+                                <option value="buyer">Buyer</option>
                             </Form.Select>
                         </Col>
                     </Form.Group>
 
-                    <Form.Group
-                        as={Row}
-                        className="mb-3"
-                        controlId="formHorizontalProfilePicture"
-                    >
-                        <Form.Label column sm={2}>
-                            Profilna slika
-                        </Form.Label>
-                        <Col sm={10}>
-                            <Form.Control
-                                type="file"
-                                accept="image/*"
-                                onChange={(e) =>
-                                    setProfilePicture(e.target.files[0])
-                                }
-                                value={profilePicture}
-                            />
-                        </Col>
-                    </Form.Group>
+                    <label htmlFor="profilePicture">Profile picture:</label>
+                    <input
+                        type="file"
+                        accept="image/*"
+                        onChange={(e) => setProfilePicture(e.target.files[0])}
+                        id="profilePicture"
+                        name="profilePicture"
+                    />
 
                     <Form.Group as={Row} className="mb-3">
                         <Col sm={{ span: 10, offset: 1 }}>
@@ -257,13 +241,6 @@ export const Register = () => {
                             </Link>
                         </Button>
                     </div>
-                    <FacebookLogin
-                        appId="756599152603732"
-                        autoLoad={true}
-                        fields="name,email,picture"
-                        returnScopes={true}
-                        callback={responseFacebook}
-                    />
                 </div>
                 <ToastContainer />
             </div>

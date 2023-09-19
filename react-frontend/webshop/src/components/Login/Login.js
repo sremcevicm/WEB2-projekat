@@ -34,7 +34,7 @@ const Login = ({ onLogin }) => {
 
     const responseFacebook = async (response) => {
         console.log("login result", response);
-        if (response.error !== undefined)
+        if (response.error != undefined)
             console.log("Error: ", response.error);
         else {
             console.log("Success");
@@ -119,7 +119,7 @@ const Login = ({ onLogin }) => {
 
                 <div className="login-with-facebook-div">
                     <FacebookLogin
-                        appId="756599152603732"
+                        appId="2081532675519698"
                         autoLoad={true}
                         fields="name,email,picture"
                         returnScopes={true}

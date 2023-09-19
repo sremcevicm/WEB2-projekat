@@ -7,6 +7,7 @@ import { NewOrdersButton } from "../Buttons/NewOrdersButton";
 import { OldOrdersButton } from "../Buttons/OldOrdersButton";
 import { VerifyUsersButton } from "../Buttons/VerifyUsersButton";
 import { MyProfileButton } from "../Buttons/MyProfileButton";
+import { Button } from "react-bootstrap";
 
 const buttonsToRender = {
     Admin: [<MyProfileButton />, <AllOrdersButton />, <VerifyUsersButton />],
@@ -30,9 +31,9 @@ export const Dashboard = () => {
 
     return (
         <div className="dashboard">
-            <button onClick={() => handleLogOut()} className="log-out-button">
+            <Button onClick={() => handleLogOut()} className="log-out-button">
                 Log out
-            </button>
+            </Button>
             <ToastContainer />
             {buttons[0]}
             {buttons[1]}

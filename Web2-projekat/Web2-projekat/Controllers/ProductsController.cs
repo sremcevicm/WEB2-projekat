@@ -1,8 +1,9 @@
-﻿using DTOs;
+﻿using Web2_projekat.DTOs;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using System.Data;
+using Web2_projekat.DTOs;
 using Web2_projekat.Interfaces;
 
 namespace Web2_projekat.Controllers

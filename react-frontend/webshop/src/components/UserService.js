@@ -6,8 +6,10 @@ export const LogIn = async (username, password, handleAlert, navigate) => {
             handleAlert("Enter both fields, username and password.", true);
             return;
         }
+
+        //console.log(process.env.REACT_APP_API_BASE_URL);
         const response = await axios.post(
-            `${process.env.REACT_APP_API_BASE_URL}/api/User/login`,
+            `${process.env.REACT_APP_API_BASE_URL}/api/Users/login`,
             {
                 username,
                 password,
@@ -45,7 +47,7 @@ export const FacebookLogIn = async (
 ) => {
     try {
         const response = await axios.post(
-            `${process.env.REACT_APP_API_BASE_URL}/api/User/facebooklogin`,
+            `${process.env.REACT_APP_API_BASE_URL}/api/Users/facebooklogin`,
             {
                 fullname,
                 id,
@@ -122,7 +124,7 @@ export const RegisterUser = async (
         formData.append("profilePicture", profilePicture);
 
         const response = await axios.post(
-            `${process.env.REACT_APP_API_BASE_URL}/api/User`,
+            `${process.env.REACT_APP_API_BASE_URL}/api/Users`,
             formData
         );
 
@@ -176,7 +178,7 @@ export const UpdateProfile = async (
         formData.append("profilePicture", profilePicture);
 
         const response = await axios.put(
-            `${process.env.REACT_APP_API_BASE_URL}/api/User/users/${username}/update`,
+            `${process.env.REACT_APP_API_BASE_URL}/api/Users/users/${username}/update`,
             formData
         );
         const { token, ...logedInUser } = response.data;
@@ -197,7 +199,7 @@ export const UpdateProfile = async (
 export const GetAllSellers = async (handleAlert, token) => {
     try {
         const response = await axios.get(
-            `${process.env.REACT_APP_API_BASE_URL}/api/User/users/sellers`,
+            `${process.env.REACT_APP_API_BASE_URL}/api/Users/users/sellers`,
             {
                 headers: {
                     Authorization: `Bearer ${token}`,
@@ -218,7 +220,7 @@ export const GetAllSellers = async (handleAlert, token) => {
 export const VerifySeller = async (username, value, token, handleAlert) => {
     try {
         const response = await axios.patch(
-            `${process.env.REACT_APP_API_BASE_URL}/api/User/users/${username}/verify`,
+            `${process.env.REACT_APP_API_BASE_URL}/api/Users/users/${username}/verify`,
             {
                 username,
                 value,

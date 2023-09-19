@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using DTOs;
+using Web2_projekat.DTOs;
 using Web2_projekat.Interfaces;
 using Web2_projekat.Models;
 using Web2_projekat.Repositories.Interfaces;

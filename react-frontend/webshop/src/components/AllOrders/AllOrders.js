@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { CalculateCountdown, GetAllOrders } from "../../services/OrderServices";
+import { CalculateCountdown, GetAllOrders } from "../OrderService";
 import { Button, Table } from "react-bootstrap";
 
 export const AllOrders = () => {
@@ -38,7 +38,7 @@ export const AllOrders = () => {
     useEffect(() => {
         const interval = setInterval(() => {
             setAllOrders((prevOrders) => {
-                return prevOrders.map((order) => {
+                return prevOrders.map(order => {
                     const updatedOrder = { ...order };
                     if (!updatedOrder.initialDeliveryTime) {
                         updatedOrder.initialDeliveryTime =
@@ -75,7 +75,7 @@ export const AllOrders = () => {
                         <th>Napomena kupca</th>
                         <th>Detalji</th>
                     </tr>
-                    {allOrders.map((order) => (
+                    {allOrders.map(order => (
                         <tr key={order.id}>
                             <td>{order.id}</td>
                             <td>{order.numberOfProducts}</td>

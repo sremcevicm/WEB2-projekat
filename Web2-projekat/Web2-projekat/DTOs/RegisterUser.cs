@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DTOs
+namespace Web2_projekat.DTOs
 {
     public class RegisterUser
     {

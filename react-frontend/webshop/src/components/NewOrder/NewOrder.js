@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { GetAllProducts } from "../ProductService";
+import { GetAllProducts } from "../ArticleService";
 import { PlaceNewOrder } from "../OrderService";
-import { useNavigate } from "react-router-dom";
-import { Link, Button, Form, Table } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import { Button, Form, Table } from "react-bootstrap";
+import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 
 export const NewOrder = () => {
     const [allProducts, setAllProducts] = useState([]);
@@ -12,7 +13,7 @@ export const NewOrder = () => {
     const token = localStorage.getItem("token");
     const [deliveryAddress, setDeliveryAddress] = useState("");
     const [comment, setComment] = useState("");
-    const navigate = useNavigate();
+    //const navigate = useNavigate();
 
     const handleAlert = (message, type) => {
         if (type === "success") toast.success(message);
@@ -81,7 +82,7 @@ export const NewOrder = () => {
                         <th>Opis</th>
                         <th>Kolicina</th>
                     </tr>
-                    {allProducts.map((product) => (
+                    {allProducts.map(product => (
                         <>
                             <tr key={product.id}>
                                 <td>{product.id}</td>
@@ -89,7 +90,7 @@ export const NewOrder = () => {
                                     <img
                                         className="profile-picture"
                                         src={product.image}
-                                        alt="No picture"
+                                        alt="Nothing"
                                     />
                                 </td>
                                 <td>{product.name}</td>
@@ -141,7 +142,7 @@ export const NewOrder = () => {
                 </Table>
             )}
             <Form className="place-new-order-form" onSubmit={placeOrder}>
-                <label htmlFor="deliveryAddress">Delivery address:</label>
+                <label htmlFor="deliveryAddress">Adresa dostave</label>
                 <input
                     value={deliveryAddress}
                     onChange={(e) => setDeliveryAddress(e.target.value)}
@@ -150,7 +151,7 @@ export const NewOrder = () => {
                     id="deliveryAddress"
                     name="deliveryAddress"
                 />
-                <label htmlFor="comment">Comment:</label>
+                <label htmlFor="comment">Komentar</label>
                 <input
                     value={comment}
                     onChange={(e) => setComment(e.target.value)}
@@ -160,8 +161,9 @@ export const NewOrder = () => {
                     name="comment"
                 />
                 <Button className="place-order-button" type="submit">
-                    Place order
+                    Naruci
                 </Button>
+                
             </Form>
         </>
     );

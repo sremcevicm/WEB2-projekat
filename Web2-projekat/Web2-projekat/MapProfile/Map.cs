@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Web2_projekat.Models;
-using DTOs;
 using Web2_projekat.Models.Enumerations;
+using Web2_projekat.DTOs;
 
 namespace Web2_projekat.MapProfile
 {

@@ -3,7 +3,7 @@ import axios from "axios";
 export const GetSellersProducts = async (handleAllert, token) => {
     try {
         const response = await axios.get(
-            `${process.env.REACT_APP_API_BASE_URL}/api/Product/seller/products`,
+            `${process.env.REACT_APP_API_BASE_URL}/api/Products/seller/products`,
             {
                 headers: {
                     Authorization: `Bearer ${token}`,
@@ -24,7 +24,7 @@ export const GetSellersProducts = async (handleAllert, token) => {
 export const GetAllProducts = async (handleAlert, token) => {
     try {
         const response = await axios.get(
-            `${process.env.REACT_APP_API_BASE_URL}/api/product`,
+            `${process.env.REACT_APP_API_BASE_URL}/api/Products`,
             {
                 headers: {
                     Authorization: `Bearer ${token}`,
@@ -45,7 +45,7 @@ export const GetAllProducts = async (handleAlert, token) => {
 export const DeleteProduct = async (handleAllert, token, productId) => {
     try {
         const response = await axios.delete(
-            `${process.env.REACT_APP_API_BASE_URL}/api/Product/products/${productId}/delete`,
+            `${process.env.REACT_APP_API_BASE_URL}/api/Products/products/${productId}/delete`,
             {
                 headers: {
                     Authorization: `Bearer ${token}`,
@@ -96,7 +96,7 @@ export const AddProduct = async (
         formData.append("image", image);
 
         const response = await axios.post(
-            `${process.env.REACT_APP_API_BASE_URL}/api/Product`,
+            `${process.env.REACT_APP_API_BASE_URL}/api/Products`,
             formData,
             {
                 headers: {
@@ -151,7 +151,7 @@ export const UpdateProduct = async (
         }
 
         const response = await axios.put(
-            `${process.env.REACT_APP_API_BASE_URL}/api/Product/products/${id}/update`,
+            `${process.env.REACT_APP_API_BASE_URL}/api/Products/products/${id}/update`,
             formData,
             {
                 headers: {

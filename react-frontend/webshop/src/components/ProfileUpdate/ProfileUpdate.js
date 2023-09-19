@@ -63,7 +63,7 @@ export const ProfileUpdate = () => {
             )}
             <div className="my-profile-form-container">
                 <ToastContainer />
-                <Form>
+                <Form onSubmit={handleSubmit}>
                     <Table striped="columns" borderless hover>
                         <tbody>
                             <tr>

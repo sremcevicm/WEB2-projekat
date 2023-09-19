@@ -1,5 +1,4 @@
-﻿ 
-namespace DTOs
+﻿namespace Web2_projekat.DTOs
 {
     public class NewOrder
     {

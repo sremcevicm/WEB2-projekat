@@ -3,7 +3,8 @@ import React, { useState, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { VerifySeller } from "../UserService";
-import { Link, Button, Table } from "react-bootstrap";
+import { Button, Table } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 export const VerifyUsers = () => {
     const [sellers, setSellers] = useState([]);
@@ -59,7 +60,7 @@ export const VerifyUsers = () => {
                                 <img
                                     className="profile-picture"
                                     src={seller.profilePictureUrl}
-                                    alt="No picture"
+                                    alt="Nothing"
                                 />
                             </div>
                         </td>
